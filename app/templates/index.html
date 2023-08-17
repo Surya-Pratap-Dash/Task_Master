@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Task_Master</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="content" placeholder="Enter task">
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.content }}
+            <a href="/update/{{ task.id }}" data-update>Update</a>
+            <a href="/delete/{{ task.id }}" data-delete>Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
